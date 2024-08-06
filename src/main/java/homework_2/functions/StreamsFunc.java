@@ -8,6 +8,33 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class StreamsFunc {
+    public static List<Integer> deleteDuplicates(List<Integer> list) {
+        return list.stream().distinct().collect(Collectors.toList());
+    }
+
+    public static Integer findThirdMaxInt(List<Integer> list) {
+        return list.stream()
+                .sorted(Comparator.reverseOrder())
+                .skip(2)
+                .findFirst()
+                .map(Integer::new)
+                .orElse(null);
+    }
+
+    public static Integer findUniqThirdMaxInt(List<Integer> list) {
+        return list.stream()
+                .distinct()
+                .sorted(Comparator.reverseOrder())
+                .skip(2)
+                .findFirst()
+                .map(Integer::new)
+                .orElse(null);
+    }
+
+    public static String findLongestString(List<String> list) {
+        return list.stream().max(Comparator.comparingInt(String::length)).orElse(null);
+    }
+
     public static List<String> getThreeOldestEngineers(List<Employee> employees) {
         return employees.stream()
                 .filter(employee -> Objects.equals(employee.getPosition(), EmployeePositionEnum.ENGINEER.getPosition()))
@@ -26,9 +53,8 @@ public class StreamsFunc {
 
     public static HashMap<String, Long> getHashMapOfStrMatches(String text) {
         List<String> parts = new ArrayList<>(Arrays.asList(text.split(" ")));
-        Map<String, Long> map = parts.stream()
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-        return new HashMap<>(map);
+        return new HashMap<>(parts.stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting())));
     }
 
     public static void sortStringsByLength(List<String> stringList) {
@@ -40,6 +66,8 @@ public class StreamsFunc {
     public static String findLongestWordInStringArray(String[] stringArray) {
         List<String> words = new ArrayList<>();
         Arrays.stream(stringArray).forEach(i -> words.addAll(Arrays.asList(i.split(" "))));
-        return Collections.max(words, Comparator.comparing(String::length));
+        return words.stream()
+                .max(Comparator.comparingInt(String::length))
+                .orElse(null);
     }
 }

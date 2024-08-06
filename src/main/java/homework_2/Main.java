@@ -1,6 +1,5 @@
 package homework_2;
 
-import homework_2.functions.CollectionsFunc;
 import homework_2.functions.CreatingFunc;
 import homework_2.functions.StreamsFunc;
 import homework_2.objects.Employee;
@@ -18,18 +17,18 @@ public class Main {
         System.out.println("---------------------------------------------");
 
         System.out.println("Удаление дубликатов");
-        List<Integer> integersWithoutDup = CollectionsFunc.deleteDuplicates(integerList);
+        List<Integer> integersWithoutDup = StreamsFunc.deleteDuplicates(integerList);
         integersWithoutDup.forEach(System.out::println);
 
         System.out.println("---------------------------------------------");
 
         System.out.println("Третье наибольшее число");
-        System.out.println(CollectionsFunc.findThirdMaxInt(integerList));
+        System.out.println(StreamsFunc.findThirdMaxInt(integerList));
 
         System.out.println("---------------------------------------------");
 
         System.out.println("Третье наибольшее уникальное число");
-        System.out.println(CollectionsFunc.findUniqThirdMaxInt(integerList));
+        System.out.println(StreamsFunc.findUniqThirdMaxInt(integerList));
 
         System.out.println("---------------------------------------------");
         System.out.println("---------------------------------------------");
@@ -61,7 +60,7 @@ public class Main {
         System.out.println("---------------------------------------------");
 
         System.out.println("Самое длинное слово");
-        System.out.println(CollectionsFunc.findLongestString(stringList));
+        System.out.println(StreamsFunc.findLongestString(stringList));
 
         System.out.println("---------------------------------------------");
         System.out.println("---------------------------------------------");
